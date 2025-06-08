@@ -1,18 +1,7 @@
 export const initialStore=()=>{
   return{
     message: null,
-    todos: [
-      {
-        id: 1,
-        title: "Make the bed",
-        background: null,
-      },
-      {
-        id: 2,
-        title: "Do my homework",
-        background: null,
-      }
-    ]
+    contacts: [],
   }
 }
 
@@ -24,14 +13,16 @@ export default function storeReducer(store, action = {}) {
         message: action.payload
       };
       
-    case 'add_task':
-
-      const { id,  color } = action.payload
-
-      return {
-        ...store,
-        todos: store.todos.map((todo) => (todo.id === id ? { ...todo, background: color } : todo))
-      };
+      case "getContacts":
+        const contacts = action.payload
+        return { ...store, contacts: contacts }
+      
+    case 'putContact':
+      const updatedContacts = store.contacts.map(contact => 
+        contact.id === action.payload.id ? action.payload : contact
+      );
+      return { ...store, contacts: updatedContacts };
+      
     default:
       throw Error('Unknown action.');
   }    

@@ -2,8 +2,9 @@ import { Link } from "react-router-dom";
 
 export const Navbar = () => {
   return (
-	
+
     <nav className="navbar navbar-light bg-dark">
+
       <div className="container">
         <Link to="/">
           <span className="navbar-brand mb-0 h1">
@@ -14,22 +15,26 @@ export const Navbar = () => {
             />
           </span>
         </Link>
-       <div className="dropdown">
-  <button
-    className="btn btn-secondary dropdown-toggle"
-    type="button"
-    data-bs-toggle="dropdown"
-    aria-expanded="false"
-  >
-    Favorites
-  </button>
+        <Link to="/contact">
+          <button className="btn btn-primary">Contact</button>
+        </Link>
 
-  <ul className="dropdown-menu">
-    <li><a className="dropdown-item" href="#">Elemento 1</a></li>
-    <li><a className="dropdown-item" href="#">Elemento 2</a></li>
-    <li><a className="dropdown-item" href="#">Elemento 3</a></li>
-  </ul>
-</div>
+        <div className="dropdown">
+          <button
+            className="btn btn-secondary dropdown-toggle"
+            type="button"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+          >
+            Favorites
+          </button>
+
+          <ul className="dropdown-menu">
+            <li><a className="dropdown-item" href="#">Elemento 1</a></li>
+            <li><a className="dropdown-item" href="#">Elemento 2</a></li>
+            <li><a className="dropdown-item" href="#">Elemento 3</a></li>
+          </ul>
+        </div>
       </div>
     </nav>
   );

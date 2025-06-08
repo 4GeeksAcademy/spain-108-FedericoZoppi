@@ -1,6 +1,6 @@
 import React, { useEffect } from "react"
 import useGlobalReducer from "../hooks/useGlobalReducer.jsx";
-import { Cards } from "../components/Cards.jsx";
+import { Cards } from "./Cards.jsx";
 export const Home = () => {
 
 	const { store, dispatch } = useGlobalReducer()
@@ -33,7 +33,9 @@ export const Home = () => {
 
 	return (
 		<div className="">
-		
+			<h1>
+
+			</h1>
 		</div>
 	);
 }; 
