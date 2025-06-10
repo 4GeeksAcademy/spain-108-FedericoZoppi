@@ -1,7 +1,9 @@
 export const initialStore=()=>{
   return{
     message: null,
+    user: "Federico",
     contacts: [],
+    favorites: [],
   }
 }
 
@@ -26,6 +28,8 @@ export default function storeReducer(store, action = {}) {
     case 'deleteContacts':
       const remainingContacts = store.contacts.filter(contact => contact.id !== action.payload.id);
       return { ...store, contacts: remainingContacts };
+
+     
 
     default:
       throw Error('Unknown action.');

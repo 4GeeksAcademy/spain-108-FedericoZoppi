@@ -16,6 +16,8 @@ export const getContacts = async () => {
   };
 
   export const postContact = async (contact) => {
+    if (contact.trim() === "") return;
+
   try {
     const response = await fetch("https://playground.4geeks.com/contact/agendas/Federico/contacts", {
       method: "POST",
@@ -64,28 +66,28 @@ export const getContacts = async () => {
   }
 }
 
-//  export const putContacts = async (e) => {
-//     e.preventDefault();
-//     if (editContact.trim() === "") return;
+ export const putContact = async (contact) => {
+ 
 
-//     try {
-//       await fetch(`${host}/todos/${editTodo.id}`, {
-//         method: "PUT",
-//         body: JSON.stringify({
-//           label: editContact,
-//           is_done: editCompleted
-//         }),
-//         headers: { "Content-Type": "application/json" }
-//       });
 
-//       setEditTask("");
-//       setEditCompleted(false);
-//       setEditTodo({});
-//       setIsEdit(false);
-//       getTodos();
-//     } catch (error) {
-//       console.error("Error modificando tarea:", error);
-//     }
-//   };
+    try {
+     const response =  await fetch(`https://playground.4geeks.com/contact/agendas/Federico/contacts/${contact.id}`,
+         {
+        method: "PUT",
+        body: JSON.stringify({
+          name: contact.name,
+          email: contact.email,
+          phone: contact.phone,
+          address: contact.address
+        }),
+        headers: { "Content-Type": "application/json" }
+      });
+      if (!response.ok){
+        throw error;
+      } return await response.json();
+    } catch (error) {
+      console.error("Error modificando Contacto:", error);
+    }
+  };
 
-// ;
+;
