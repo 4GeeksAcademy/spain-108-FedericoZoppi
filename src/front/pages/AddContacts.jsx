@@ -43,7 +43,7 @@ export const AddContacts = () => {
 
         
            navigate('/contact');
-           console.log('handleSubmit', handleSubmit);
+         
     // 3 USAMOS USENAVIGATE PARA REDIRECCIONAR A LA PAGINA DE CONTACTOS
     
    

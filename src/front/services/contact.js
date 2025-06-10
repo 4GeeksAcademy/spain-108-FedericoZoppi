@@ -38,36 +38,54 @@ export const getContacts = async () => {
     }}
 
 
-//   const addTask = async () => {
-//     if (newTask.trim() === "") return;
+  export const deleteContact = async (contact, dispatch) => {
+  try {
+    const response = await fetch(`https://playground.4geeks.com/contact/agendas/Federico/contacts/${contact.id}`, {
+      method: "DELETE"
+    });
+
+    if (!response.ok) {
+      console.error("Error eliminando contacto:", response.status);
+      return;
+    }
+
+    // Volvemos a cargar todos los contactos actualizados
+    const updatedContacts = await getContacts();
+
+    // Actualizamos el store con la lista nueva
+    dispatch({
+      type: "getContacts",
+      payload: updatedContacts
+    });
+
+    console.log("Contacto eliminado:", contact);
+  } catch (error) {
+    console.error("Error eliminando Contacto:", error);
+  }
+}
+
+//  export const putContacts = async (e) => {
+//     e.preventDefault();
+//     if (editContact.trim() === "") return;
 
 //     try {
-//       const response = await fetch(POST_URL, {
-//         method: "POST",
-//         body: JSON.stringify({ label: newTask, is_done: false }),
+//       await fetch(`${host}/todos/${editTodo.id}`, {
+//         method: "PUT",
+//         body: JSON.stringify({
+//           label: editContact,
+//           is_done: editCompleted
+//         }),
 //         headers: { "Content-Type": "application/json" }
 //       });
 
-//       if (!response.ok) throw new Error(`Error: ${response.status}`);
-//       setNewTask("");
+//       setEditTask("");
+//       setEditCompleted(false);
+//       setEditTodo({});
+//       setIsEdit(false);
 //       getTodos();
 //     } catch (error) {
-//       console.error("Error al agregar tarea:", error);
+//       console.error("Error modificando tarea:", error);
 //     }
 //   };
 
-
-//   const deleteTask = async (id) => {
-//     try {
-//       const response = await fetch(`${host}/todos/${id}`, {
-//         method: "DELETE"
-//       });
-//       if (response.ok) {
-//         getTodos();
-//       } else {
-//         console.error("Error eliminando tarea:", response.status);
-//       }
-//     } catch (error) {
-//       console.error("Error eliminando tarea:", error);
-//     }
-//   };
+// ;
