@@ -32,7 +32,7 @@ export const Home = () => {
 	}, [])
 
 	return (
-		<div className="">
+		<div>
 			<h1>
 
 			</h1>

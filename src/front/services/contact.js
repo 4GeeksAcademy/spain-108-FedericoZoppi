@@ -3,8 +3,9 @@ export const getContacts = async () => {
     try {
       const response = await fetch("https://playground.4geeks.com/contact/agendas/Federico/contacts");
       if (!response.ok && response.status == 404) {
-        AddContacts()
-        return
+        console.log("AQUI LLEGAMOS",response)
+        
+        return AddUser()
       } 
       const data = await response.json();
       console.log("Contacts:", data);
@@ -15,8 +16,31 @@ export const getContacts = async () => {
     }
   };
 
-  export const postContact = async (contact) => {
+  // agrego usuario
+  export const AddUser = async () =>{
+    const user = "Federico"
+    try {
+      const response = await fetch (`https://playground.4geeks.com/contact/agendas/${user}`,
+        {
+          method: "POST",
+          body: JSON.stringify({
 
+          }),
+          headers: {
+            "Content-Type": "application/json"
+          }
+        });
+        console.log("USER CREADO",response)
+      if (response.ok) {
+       return await getContacts()
+      }
+    } catch (error) {
+      console.error("Error al crear usuario:", error);
+    }}
+  
+  
+
+  export const postContact = async (contact) => {
 
   try {
     const response = await fetch("https://playground.4geeks.com/contact/agendas/Federico/contacts", {
@@ -32,11 +56,11 @@ export const getContacts = async () => {
       }
     });
       if (response.ok) {
-        getContacts()
+      return await getContacts()
       }
 
     } catch (error) {
-      console.error("Error al crear usuario:", error);
+      console.error("Error al crear Lista:", error);
     }}
 
 
@@ -83,4 +107,8 @@ export const getContacts = async () => {
     }
   };
 
-;
+  export const addFavorite = () => {
+    
+
+  }
+

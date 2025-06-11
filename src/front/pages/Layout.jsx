@@ -17,7 +17,7 @@ export const Layout = () => {
     
       useEffect(() => {
         const get = async () => {
-    
+          
           const contacts = await getContacts()
           dispatch({
             type: "getContacts",
@@ -25,11 +25,13 @@ export const Layout = () => {
           })
     
         }
-    
+ 
         get()
     
     
       }, [])
+
+      
     return (
         <ScrollToTop className="scrollToTop">
             <div className="containerLayout">

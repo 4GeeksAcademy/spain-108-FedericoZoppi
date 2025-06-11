@@ -1,4 +1,4 @@
-.containerLayout {
+/* .containerLayout {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -20,13 +20,13 @@
 }
 
 .card {
-  min-width: 18rem; /* asegura que no se achiquen demasiado */
+  min-width: 18rem; 
   max-width: 18rem;
-  flex-shrink: 0; /* evita que se deformen al reducir el ancho */
+  flex-shrink: 0; 
 }
 
 .card-img-top {
   width: 100%;
   height: 200px;
-  object-fit: cover; /* recorta o ajusta la imagen para mantener proporciones */
-}
+  object-fit: cover; 
+} */

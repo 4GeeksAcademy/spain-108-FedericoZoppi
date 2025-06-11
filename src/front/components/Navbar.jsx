@@ -6,7 +6,7 @@ export const Navbar = () => {
     <nav className="navbar navbar-light bg-dark">
 
       <div className="container">
-        <Link to="/">
+        {/* <Link to="/">
           <span className="navbar-brand mb-0 h1">
             <img
               src="https://upload.wikimedia.org/wikipedia/commons/6/6c/Star_Wars_Logo.svg"
@@ -14,18 +14,14 @@ export const Navbar = () => {
               style={{ height: "40px" }}
             />
           </span>
-        </Link>
+        </Link> */}
         <Link to="/contact">
-          <button className="btn btn-primary">Contact</button>
+          <button className="btn btn-primary">Start</button>
         </Link>
 
-        <div className="dropdown">
-          <button
-            className="btn btn-secondary dropdown-toggle"
-            type="button"
-            data-bs-toggle="dropdown"
-            aria-expanded="false"
-          >
+        {/* <div className="dropdown">
+          <button className="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown"
+            aria-expanded="false">
             Favorites
           </button>
 
@@ -34,7 +30,8 @@ export const Navbar = () => {
             <li><a className="dropdown-item" href="#">Elemento 2</a></li>
             <li><a className="dropdown-item" href="#">Elemento 3</a></li>
           </ul>
-        </div>
+        </div> */}
+
       </div>
     </nav>
   );

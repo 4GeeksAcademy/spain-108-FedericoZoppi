@@ -4,7 +4,7 @@ import { getContacts, postContact, putContact } from '../services/contact';   //
 import { useNavigate } from 'react-router-dom';
 import useGlobalReducer from '../hooks/useGlobalReducer';
 import { useParams } from "react-router-dom";
-
+import { Link } from "react-router-dom";
 
 export const AddContacts = () => {
 
@@ -33,9 +33,9 @@ export const AddContacts = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         if (
-            !contactName.trim() &&
-            !contactPhone.trim() &&
-            !contactEmail.trim() &&
+            !contactName.trim() ||
+            !contactPhone.trim() ||
+            !contactEmail.trim() ||
             !contactAddress.trim()
         ) {
             setContactName(''),
@@ -111,7 +111,12 @@ export const AddContacts = () => {
                 </div>
 
                 <button  type="submit" className="col-12 btn btn-primary">Submit</button>
+                <Link to="/contact">
+                <button  Link ="" className="col btn text-primary">or get back to contacts </button>
+                </Link>
             </form>
+            
+            
         </div>
     );
 }
