@@ -1,3 +1,5 @@
+// Contact.jsx
+
 import { useEffect } from "react"
 import { Link } from "react-router-dom"
 import { deleteContact, getContacts, putContact } from "../services/contact"
@@ -14,30 +16,6 @@ export const Contact = () => {
   const handleDelete = async (contact) => {
     await deleteContact(contact, dispatch)
   }
-
-  const handleEdit = async (contact) => {
-    await putContact(contact,dispatch)
-  }
-
-
-
-
-  useEffect(() => {
-    const get = async () => {
-
-      const contacts = await getContacts()
-      dispatch({
-        type: "getContacts",
-        payload: contacts
-      })
-      console.log(store.contacts)
-    }
-
-    get()
-
-
-  }, [])
-
 
 
 
@@ -63,7 +41,7 @@ export const Contact = () => {
                   🗑️
                 </button>
                 <Link to={`/addcontacts/${item.id}`}>
-                <button className="btn btn-outline-warning float-end" onClick={() => handleEdit(item)}>
+                <button className="btn btn-outline-warning float-end">
                   📝
                 </button>
                  </Link>

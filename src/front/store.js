@@ -1,3 +1,5 @@
+
+// stor
 export const initialStore=()=>{
   return{
     message: null,
@@ -19,17 +21,19 @@ export default function storeReducer(store, action = {}) {
         const contacts = action.payload
         return { ...store, contacts: contacts }
       
-    case 'postContact':
-      const updatedContacts = store.contacts.map(contact => 
-        contact.id === action.payload.id ? action.payload : contact
-      );
-      return { ...store, contacts: updatedContacts };
+case 'postContact':
+  return { ...store, contacts: [...store.contacts, action.payload] };
       
     case 'deleteContacts':
       const remainingContacts = store.contacts.filter(contact => contact.id !== action.payload.id);
       return { ...store, contacts: remainingContacts };
 
-     
+     case 'putContact':
+  const editedContacts = store.contacts.map(contact =>
+    contact.id === action.payload.id ? action.payload : contact
+  );
+  return { ...store, contacts: editedContacts };
+
 
     default:
       throw Error('Unknown action.');

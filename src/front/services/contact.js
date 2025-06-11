@@ -1,4 +1,4 @@
-
+// SERVICE CONTACT.JS
 export const getContacts = async () => {
     try {
       const response = await fetch("https://playground.4geeks.com/contact/agendas/Federico/contacts");
@@ -16,7 +16,7 @@ export const getContacts = async () => {
   };
 
   export const postContact = async (contact) => {
-    if (contact.trim() === "") return;
+
 
   try {
     const response = await fetch("https://playground.4geeks.com/contact/agendas/Federico/contacts", {
@@ -47,7 +47,7 @@ export const getContacts = async () => {
     });
 
     if (!response.ok) {
-      console.error("Error eliminando contacto:", response.status);
+      console.log("Error eliminando contacto:", response.status);
       return;
     }
 
@@ -66,25 +66,18 @@ export const getContacts = async () => {
   }
 }
 
- export const putContact = async (contact) => {
- 
-
-
+ export const putContact = async (id, contact) => {
     try {
-     const response =  await fetch(`https://playground.4geeks.com/contact/agendas/Federico/contacts/${contact.id}`,
+     const response =  await fetch(`https://playground.4geeks.com/contact/agendas/Federico/contacts/${id}`,
          {
         method: "PUT",
-        body: JSON.stringify({
-          name: contact.name,
-          email: contact.email,
-          phone: contact.phone,
-          address: contact.address
-        }),
+        body: JSON.stringify(contact),
         headers: { "Content-Type": "application/json" }
       });
       if (!response.ok){
-        throw error;
+        throw new error;
       } return await response.json();
+  
     } catch (error) {
       console.error("Error modificando Contacto:", error);
     }

@@ -1,3 +1,4 @@
+// AddContacts
 import React, { useState, useEffect } from 'react';
 import { getContacts, postContact, putContact } from '../services/contact';   // 1 LLAMAMOS AL SERVICIO 
 import { useNavigate } from 'react-router-dom';
@@ -31,37 +32,50 @@ export const AddContacts = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+        if (
+            !contactName.trim() &&
+            !contactPhone.trim() &&
+            !contactEmail.trim() &&
+            !contactAddress.trim()
+        ) {
+            setContactName(''),
+                setContactPhone(''),
+                setContactEmail(''),
+                setContactAddress('')
+            return
+        }
         const data = {
             name: contactName,
             email: contactEmail,
             phone: contactPhone,
             address: contactAddress
-        };
-
-        if (id) {
-            await putContact(id, data);
-        } else {
-            await postContact(data);
         }
+        try {
+            if (id) {
+                await putContact(id, data);
+                dispatch({
+                    type: "getContacts",
+                    payload: id, ...data
+                })
+            } else {
+                await postContact(data);
+            }
 
-
-        const contacts = await getContacts();
-        dispatch({
-            type: "getContacts",
-            payload: contacts
-        });
+            const contacts = await getContacts();
+            if (contacts){
+                dispatch({
+                    type: "getContacts",
+                    payload: contacts
+                })};
+                navigate('/contact');
+            }
+            catch (error) {
+                console.error("error en e form", error)
+            }
+            
 
 
         // 2 HACEMOS DISPATCH DE GETCONTACTS PARA ACTUALIZAR LA LISTA DE CONTACTOS
-
-        setContactName('');
-        setContactEmail('');
-        setContactPhone('');
-        setContactAddress('');
-
-
-        navigate('/contact');
-
         // 3 USAMOS USENAVIGATE PARA REDIRECCIONAR A LA PAGINA DE CONTACTOS
 
 
@@ -78,7 +92,7 @@ export const AddContacts = () => {
 
     return (
         <div className="container m-auto row">
-            <form  >
+            <form onSubmit={handleSubmit}  >
                 <div className="mb-3 col-12">
                     <label for="exampleInputPassword1" className="form-label">Name</label>
                     <input onChange={handleName} value={contactName} type="text" placeholder="Federico" className="form-control" id="exampleInputPassword1" />
@@ -96,7 +110,7 @@ export const AddContacts = () => {
                     <input onChange={handleAddress} value={contactAddress} type="text" placeholder="World" className="form-control" id="exampleInputPassword4" />
                 </div>
 
-                <button onClick={handleSubmit} type="submit" className="col-12 btn btn-primary">Submit</button>
+                <button  type="submit" className="col-12 btn btn-primary">Submit</button>
             </form>
         </div>
     );
