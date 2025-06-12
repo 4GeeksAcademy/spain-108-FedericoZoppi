@@ -1,9 +1,15 @@
+import { PlanetDetails } from "./pages/PlanetDetails";
+
 // stor
 export const initialStore = () => {
   return {
     message: null,
     contacts: [],
     favorites: [],
+    characters: [],
+    planets: [],
+    planetsDetails:[],
+    starships: [],
   };
 };
 
@@ -32,12 +38,28 @@ export default function storeReducer(store, action = {}) {
       const editedContacts = store.contacts.map((contact) =>
         contact.id === action.payload.id ? action.payload : contact
       );
+
       return { ...store, contacts: editedContacts };
 
-    // case 'addFavorite':
-    // return { ...store, favorites: [...store.favorites, action.payload] };
+    case "planets":
+      const planet = action.payload;
+      return { ...store, planets: planet };
+
+      case "planetsDetails":
+        const planetsDetails= action.payload
+        return {...store, planetsDetails:[...store.planetsDetails, planetsDetails]}
 
     default:
       throw Error("Unknown action.");
   }
 }
+
+// case "getCharacters":
+//   const characters = action.payload
+//   return {...store, characters: characters};
+// case "getStarships":
+//   const starships = action.payload
+//   return {...store, starships: starships};
+
+// case 'addFavorite':
+// return { ...store, favorites: [...store.favorites, action.payload] };

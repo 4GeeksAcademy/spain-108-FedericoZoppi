@@ -1,32 +1,36 @@
-/* .containerLayout {
+body {
+  background-color: black;
+}
+
+.containerLayout {
     display: flex;
     flex-direction: column;
     justify-content: center;
     margin: 2rem;
+    background-color: black;
 }
-.container-Characters,
-.container-Planets {
+/* .container {
   width: 100%;
   padding: 20px;
   overflow-x: auto;
-}
-
-.cards {
-  display: flex;
-  gap: 1rem;
-  flex-wrap: nowrap;
-  overflow-x: auto;
-  scroll-behavior: smooth;
-}
-
+} */
 .card {
   min-width: 18rem; 
   max-width: 18rem;
   flex-shrink: 0; 
-}
+  }
+ 
+  .cards {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+  }
 
 .card-img-top {
   width: 100%;
   height: 200px;
   object-fit: cover; 
-} */
+}
+ 

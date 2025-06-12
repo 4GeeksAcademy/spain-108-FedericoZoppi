@@ -12,6 +12,12 @@ import { Single } from "./pages/Single";
 import { Demo } from "./pages/Demo";
 import { Contact } from "./pages/Contact";
 import { AddContacts } from "./pages/AddContacts";
+import {Characters} from "./pages/Characters"
+import {Planets} from "./pages/Planets"
+import {Starships} from "./pages/Starships"
+import { PlanetDetails } from "./pages/PlanetDetails";
+
+
 
 export const router = createBrowserRouter(
     createRoutesFromElements(
@@ -27,6 +33,14 @@ export const router = createBrowserRouter(
         <Route path="/contact" element={<Contact />} />
         <Route path="/addcontacts" element={<AddContacts />} />
         <Route path="/addcontacts/:id" element={<AddContacts />} />
+        <Route path="/characters" element={<Characters/>}/>
+        <Route path="/characters/:uid" element={<Characters/>}/>
+        <Route path="/planets" element={<Planets/>}/>
+        <Route path="/planets/:uid" element={<PlanetDetails/>}/>
+        <Route path="/starships" element={<Starships/>}/>
+        <Route path="/startships/:uid" element={<Starships/>}/>
+
+
         {/* Nested Routes: Defines sub-routes within the BaseHome component. */}
         {/* <Route path="/Cards" element={<Cards />} /> */}
         <Route path="/single/:theId" element={ <Single />} />  {/* Dynamic route for single items */}

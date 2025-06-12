@@ -38,29 +38,29 @@ export const Contact = () => {
               <div className="col-auto">
                 <img src={`https://randomuser.me/api/portraits/${item.id % 2 === 0 ? 'men' : 'women'}/${item.id}.jpg`} className="rounded-circle" />
               </div>
-           
-                <div className="datosBotones col d-flex justify-content-between">
 
-                  
-                  <div className="datos ">
-                    <h5 className="card-title mb-1">{item.name}</h5>
-                    <i className="fas fa-map-marker-alt me-2 text-muted"></i>{item.address}
-                    <p className="mb-1">
-                      <i className="fas fa-phone me-2 text-muted"></i>{item.phone}
-                    </p>
-                    <p className="mb-0">
-                      <i className="fas fa-envelope me-2 text-muted"></i>{item.email}
-                    </p>
+              <div className="datosBotones col d-flex justify-content-between">
+
+
+                <div className="datos ">
+                  <h5 className="card-title mb-1">{item.name}</h5>
+                  <i className="fas fa-map-marker-alt me-2 text-muted"></i>{item.address}
+                  <p className="mb-1">
+                    <i className="fas fa-phone me-2 text-muted"></i>{item.phone}
+                  </p>
+                  <p className="mb-0">
+                    <i className="fas fa-envelope me-2 text-muted"></i>{item.email}
+                  </p>
                 </div>
-{/* 4 CREAMOS BOTON DELETE QUE CON UN ONCLICK EJECUTE LA FUNCION HANDLEDELETE */}
-                  <div className="botones m-4">
-                    <Link to={`/addcontacts/${item.id}`} className="btn btn-outline-warning btn-sm m-1">
-                      <i className="fas fa-pencil-alt"></i>
-                    </Link>
-                    <button onClick={() => handleDelete(item)} className="btn btn-outline-danger btn-sm m-1">
-                      <i className="fas fa-trash"></i>
-                    </button>
-                  </div>
+                {/* 4 CREAMOS BOTON DELETE QUE CON UN ONCLICK EJECUTE LA FUNCION HANDLEDELETE */}
+                <div className="botones m-4">
+                  <Link to={`/addcontacts/${item.id}`} className="btn btn-outline-warning btn-sm m-1">
+                    <i className="fas fa-pencil-alt"></i>
+                  </Link>
+                  <button onClick={() => handleDelete(item)} className="btn btn-outline-danger btn-sm m-1">
+                    <i className="fas fa-trash"></i>
+                  </button>
+                </div>
 
               </div>
             </div>
