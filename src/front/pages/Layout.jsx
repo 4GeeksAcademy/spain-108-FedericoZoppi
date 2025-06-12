@@ -51,14 +51,14 @@ export const Layout = () => {
 
       
     return (
-        <ScrollToTop className="scrollToTop">
-            <div className="containerLayout">
+        <ScrollToTop className="scrollToTop flex-fill">
+            <div className="containerLayout ">
                 <Navbar />
-                 <div className="containerCards">
+                 <div className="containerCards ">
                     <Cards />
                 </div> 
                 
-                <Outlet />
+                <Outlet  />
             </div>
             <Footer />
         </ScrollToTop>

@@ -20,8 +20,13 @@ export const getPlanets = async () => {
     try {
       const response = await fetch (`${host}/planets/${id}`);
       if (!response.ok && response.status == 404) {
-        console.log("ME TILDÈ")
-      } }
+        console.log("ME TILDÈ",response)
+      }
+        const data = await response.json();
+    console.log(data)
+
+    return data.result.properties
+   }
       catch(error){
         console.error("NO ENCONTRE EL PLANETA")
 
