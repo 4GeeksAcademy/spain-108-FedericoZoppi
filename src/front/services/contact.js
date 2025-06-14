@@ -3,12 +3,12 @@ export const getContacts = async () => {
     try {
       const response = await fetch("https://playground.4geeks.com/contact/agendas/Federico/contacts");
       if (!response.ok && response.status == 404) {
-        console.log("AQUI LLEGAMOS",response)
+  
         
         return AddUser()
       } 
       const data = await response.json();
-      console.log("Contacts:", data);
+
       return data.contacts;
 
     } catch (error) {
@@ -30,7 +30,7 @@ export const getContacts = async () => {
             "Content-Type": "application/json"
           }
         });
-        console.log("USER CREADO",response)
+    
       if (response.ok) {
        return await getContacts()
       }
@@ -71,7 +71,7 @@ export const getContacts = async () => {
     });
 
     if (!response.ok) {
-      console.log("Error eliminando contacto:", response.status);
+
       return;
     }
 
@@ -84,7 +84,7 @@ export const getContacts = async () => {
       payload: updatedContacts
     });
 
-    console.log("Contacto eliminado:", contact);
+
   } catch (error) {
     console.error("Error eliminando Contacto:", error);
   }

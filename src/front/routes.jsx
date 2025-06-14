@@ -13,10 +13,10 @@ import { Demo } from "./pages/Demo";
 import { Contact } from "./pages/Contact";
 import { AddContacts } from "./pages/AddContacts";
 import {Characters} from "./pages/Characters"
+import {CharacterDetails} from "./pages/CharacterDetails"
 import {Planets} from "./pages/Planets"
-import {Starships} from "./pages/Starships"
 import { PlanetDetails } from "./pages/PlanetDetails";
-
+import {Starships} from "./pages/Starships"
 
 
 export const router = createBrowserRouter(
@@ -34,7 +34,7 @@ export const router = createBrowserRouter(
         <Route path="/addcontacts" element={<AddContacts />} />
         <Route path="/addcontacts/:id" element={<AddContacts />} />
         <Route path="/characters" element={<Characters/>}/>
-        <Route path="/characters/:uid" element={<Characters/>}/>
+        <Route path="/characters/:uid" element={<CharacterDetails/>}/>
         <Route path="/planets" element={<Planets/>}/>
         <Route path="/planets/:uid" element={<PlanetDetails/>}/>
         <Route path="/starships" element={<Starships/>}/>

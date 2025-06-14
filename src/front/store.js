@@ -7,9 +7,11 @@ export const initialStore = () => {
     contacts: [],
     favorites: [],
     characters: [],
+    characterDetail: {},
     planets: [],
-    planetDetail:{},
+    planetDetail: {},
     starships: [],
+    starShipsDetail: {},
   };
 };
 
@@ -41,13 +43,39 @@ export default function storeReducer(store, action = {}) {
 
       return { ...store, contacts: editedContacts };
 
+    case "characters":
+      const character = action.payload;
+      return { ...store, characters: character };
+
     case "planets":
       const planet = action.payload;
       return { ...store, planets: planet };
 
-      case "planetDetail":
-        const planetDetail= action.payload
-        return {...store, planetDetail: planetDetail}
+    case "starships":
+      const starship = action.payload;
+      return { ...store, starships: starship };
+
+    case "planetDetail":
+      const planetDetail = action.payload;
+      return { ...store, planetDetail: planetDetail };
+
+    case "characterDetail":
+      const characterDetail = action.payload;
+      return { ...store, characterDetail: characterDetail };
+
+    case "starshipDetail":
+      const starshipDetail = action.payload;
+      return { ...store, startshipDetail: starshipDetail };
+
+    case "favorite":
+      return {
+        ...store,
+        favorites: store.favorites.find(
+          (item) => item.uid === action.payload.uid
+        )
+          ? store.favorites.filter((fav) => fav.uid !== action.payload.uid)
+          : [...store.favorites, { ...action.payload }],
+      };
 
     default:
       throw Error("Unknown action.");

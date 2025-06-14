@@ -9,6 +9,8 @@ import useGlobalReducer from "../hooks/useGlobalReducer.jsx"
 import { useEffect } from "react"
 import { getContacts } from "../services/contact.js"
 import { getPlanets } from "../services/starwars.js"
+import {getCharacters} from "../services/starwars.js"
+import {getStarships} from "../services/starwars.js"
 
 
 // Base component that maintains the navbar and footer throughout the page and the scroll to top functionality.
@@ -33,28 +35,42 @@ export const Layout = () => {
           })
         }
 
+        const getChar = async () => {
+          const char = await getCharacters()
+          
+
+         dispatch({
+            type: "characters",
+            payload: char
+          })
+        }
+
+        const getShip = async () => {
+          const ship = await getStarships()
+
+  
+         dispatch({
+            type: "starships",
+            payload: ship
+          })
+        }
+
+        getChar()
         getContact()
         getPlanet()
+        getShip()
+
+
       }, [])
 
 
-      // useEffect(() => {
-      //   const getPlanet = async () => {
-      //     const planets = await getPlanets()
-      //     dispatch({
-      //       type: "planets",
-      //       payload: planets
-      //     })
-      //   }
-      //   getPlanet()
-      // }, [])
-
+     
       
     return (
         <ScrollToTop className="scrollToTop flex-fill">
             <div className="containerLayout ">
                 <Navbar />
-                 <div className="containerCards ">
+                 <div >
                     <Cards />
                 </div> 
                 
