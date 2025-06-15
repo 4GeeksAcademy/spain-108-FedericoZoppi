@@ -1,38 +1,93 @@
-export const initialStore=()=>{
-  return{
+import { PlanetDetails } from "./pages/PlanetDetails";
+
+// stor
+export const initialStore = () => {
+  return {
     message: null,
-    todos: [
-      {
-        id: 1,
-        title: "Make the bed",
-        background: null,
-      },
-      {
-        id: 2,
-        title: "Do my homework",
-        background: null,
-      }
-    ]
+    contacts: [],
+    favorites: [],
+    characters: [],
+    characterDetail: {},
+    planets: [],
+    planetDetail: {},
+    starships: [],
+    starshipDetail: {},
+  };
+};
+
+export default function storeReducer(store, action = {}) {
+  switch (action.type) {
+    case "set_hello":
+      return {
+        ...store,
+        message: action.payload,
+      };
+
+    case "getContacts":
+      const contacts = action.payload;
+      return { ...store, contacts: contacts };
+
+    case "postContact":
+      return { ...store, contacts: [...store.contacts, action.payload] };
+
+    case "deleteContacts":
+      const remainingContacts = store.contacts.filter(
+        (contact) => contact.id !== action.payload.id
+      );
+      return { ...store, contacts: remainingContacts };
+
+    case "putContact":
+      const editedContacts = store.contacts.map((contact) =>
+        contact.id === action.payload.id ? action.payload : contact
+      );
+
+      return { ...store, contacts: editedContacts };
+
+    case "characters":
+      const character = action.payload;
+      return { ...store, characters: character };
+
+    case "planets":
+      const planet = action.payload;
+      return { ...store, planets: planet };
+
+    case "starships":
+      const starship = action.payload;
+      return { ...store, starships: starship };
+
+    case "planetDetail":
+      const planetDetail = action.payload;
+      return { ...store, planetDetail: planetDetail };
+
+    case "characterDetail":
+      const characterDetail = action.payload;
+      return { ...store, characterDetail: characterDetail };
+
+    case "starshipDetail":
+      const starshipDetail = action.payload;
+      return { ...store, starshipDetail: starshipDetail };
+
+    case "favorite":
+      return {
+        ...store,
+        favorites: store.favorites.find(
+          (item) => item.name === action.payload.name && item.uid === action.payload.uid
+        )
+          ? store.favorites.filter((fav) => fav.name && fav.uid !== action.payload.uid)
+          : [...store.favorites, { ...action.payload }],
+      };
+
+    default:
+      throw Error("Unknown action.");
   }
 }
 
-export default function storeReducer(store, action = {}) {
-  switch(action.type){
-    case 'set_hello':
-      return {
-        ...store,
-        message: action.payload
-      };
-      
-    case 'add_task':
+// case "getCharacters":
+//   const characters = action.payload
+//   return {...store, characters: characters};
+// case "getStarships":
+//   const starships = action.payload
+//   return {...store, starships: starships};
 
-      const { id,  color } = action.payload
-
-      return {
-        ...store,
-        todos: store.todos.map((todo) => (todo.id === id ? { ...todo, background: color } : todo))
-      };
-    default:
-      throw Error('Unknown action.');
-  }    
-}
+// case 'addFavorite':
+// return { ...store, favorites: [...store.favorites, action.payload] };
