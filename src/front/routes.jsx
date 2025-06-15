@@ -17,6 +17,7 @@ import {CharacterDetails} from "./pages/CharacterDetails"
 import {Planets} from "./pages/Planets"
 import { PlanetDetails } from "./pages/PlanetDetails";
 import {Starships} from "./pages/Starships"
+import {StarshipDetails} from "./pages/StarshipDetails"
 
 
 export const router = createBrowserRouter(
@@ -38,7 +39,7 @@ export const router = createBrowserRouter(
         <Route path="/planets" element={<Planets/>}/>
         <Route path="/planets/:uid" element={<PlanetDetails/>}/>
         <Route path="/starships" element={<Starships/>}/>
-        <Route path="/startships/:uid" element={<Starships/>}/>
+        <Route path="/starships/:uid" element={<StarshipDetails/>}/>
 
 
         {/* Nested Routes: Defines sub-routes within the BaseHome component. */}

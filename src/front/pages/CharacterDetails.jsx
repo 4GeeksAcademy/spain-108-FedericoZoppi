@@ -18,36 +18,38 @@ export const CharacterDetails = () => {
     getCharacter();
   }, [params.uid]);
 
-  return (
-    <div className="container d-flex justify-content-center m-2">
-      <div className="d-sm-flex">
-        <div className="card-img">
-          <img
-            src={`https://raw.githubusercontent.com/tbone849/star-wars-guide/refs/heads/master/build/assets/img/characters/${params.uid}.jpg`}
-            className="card-img-top m-2"
-            onError={(e) => {
-              e.target.src = fallbackImg;
-            }}
-            alt="..."
-          />
-        </div>
-        <div className="card-body d-flex flex-column justify-content-center mb-5 col-12 text-light">
-          <h5 className="card-title d-flex m-5">
-            Name: {characterDetail.name}
-          </h5>
-          <div>
-            <p className="card-text m-3">
-              Height: {characterDetail.height}
-            </p>
-            <p className="card-text m-3">
-              Birth year: {characterDetail.birth_year}
-            </p>
-            <p className="card-text m-3">
-              Gender: {characterDetail.gender}
-            </p>
-          </div>
+return (
+  <div className="containerDetail container py-4 d-flex justify-content-center">
+    <div className="row g-4 align-items-center w-100">
+      <div className="col-md-6 d-flex justify-content-center">
+        <img
+          src={`https://raw.githubusercontent.com/tbone849/star-wars-guide/refs/heads/master/build/assets/img/characters/${params.uid}.jpg`}
+          className="img-fluid rounded border border-light"
+          onError={(e) => {
+            e.target.src = fallbackImg;
+          }}
+          alt="..."
+        />
+      </div>
+      <div className="col-md-6 text-light">
+        <h5 className="mb-4 text-center text-md-start fw-bold">
+          Name: {characterDetail.name}
+        </h5>
+        <div className="px-3">
+          <p className="mb-3">
+            <strong>Height:</strong> {characterDetail.height}
+          </p>
+          <p className="mb-3">
+            <strong>Birth year:</strong> {characterDetail.birth_year}
+          </p>
+          <p className="mb-3">
+            <strong>Gender:</strong> {characterDetail.gender}
+          </p>
         </div>
       </div>
     </div>
-  );
+  </div>
+);
+
+
 };

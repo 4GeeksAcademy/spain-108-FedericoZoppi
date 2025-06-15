@@ -42,33 +42,37 @@ body {
   background-image: url('');
   background-size:cover;
   background-position:center ;
+  background-repeat:round;}
+
+.containerStarships{
+   background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRJvlGYEitgttl6wZrgKB30EPJTEQZlS8zt5A&s');
+  background-size:cover;
+  background-position:center ;
   background-repeat:round;
-
-
-
+  min-height: 15vh; 
+  min-width: 100%;
 }
+
+
+
+
 
 .flex-fill {
     flex: 1;
 }
-/* .container {
-  width: 100%;
-  padding: 20px;
-  overflow-x: auto;
-} */
 .card {
   min-width: 18rem; 
   max-width: 18rem;
   flex-shrink: 0; 
-  }
- 
-  .cards {
-    display: flex;
-    gap: 1rem;
-    flex-wrap: nowrap;
-    overflow-x: auto;
-    scroll-behavior: smooth;
-  }
+}
+
+.cards {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+}
 
 .card-img {
   width: 50%;
@@ -77,4 +81,10 @@ body {
 }
 
 
- /* https://blog.camaralia.com/wp-content/uploads/2016/01/Star-Wars-Blu-ray1.jpg */
+/* https://blog.camaralia.com/wp-content/uploads/2016/01/Star-Wars-Blu-ray1.jpg */
+
+/* .container {
+  width: 100%;
+  padding: 20px;
+  overflow-x: auto;
+} */

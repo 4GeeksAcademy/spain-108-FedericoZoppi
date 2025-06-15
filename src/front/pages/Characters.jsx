@@ -43,7 +43,7 @@ export const Characters = () => {
                   className="btn btn-outline-danger"
                   onClick={() => handleFavorite(item)}>
 
-                  {isFavorite(item.name)
+                  {isFavorite(item)
                     ? <i className="fa-solid fa-heart-crack"></i>
                     : <i className="fa-solid fa-heart"></i>
                   }

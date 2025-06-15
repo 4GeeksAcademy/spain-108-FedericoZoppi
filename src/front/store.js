@@ -11,7 +11,7 @@ export const initialStore = () => {
     planets: [],
     planetDetail: {},
     starships: [],
-    starShipsDetail: {},
+    starshipDetail: {},
   };
 };
 
@@ -65,15 +65,15 @@ export default function storeReducer(store, action = {}) {
 
     case "starshipDetail":
       const starshipDetail = action.payload;
-      return { ...store, startshipDetail: starshipDetail };
+      return { ...store, starshipDetail: starshipDetail };
 
     case "favorite":
       return {
         ...store,
         favorites: store.favorites.find(
-          (item) => item.uid === action.payload.uid
+          (item) => item.name === action.payload.name && item.uid === action.payload.uid
         )
-          ? store.favorites.filter((fav) => fav.uid !== action.payload.uid)
+          ? store.favorites.filter((fav) => fav.name && fav.uid !== action.payload.uid)
           : [...store.favorites, { ...action.payload }],
       };
 

@@ -32,25 +32,34 @@ export const PlanetDetails = () => {
 
 
 
-    return (
-        <div className="containerPlanetas row d-flex justify-content-around ">
-          
-            <div className="card-img ">
-                <img src={`https://raw.githubusercontent.com/tbone849/star-wars-guide/refs/heads/master/build/assets/img/planets/${params.uid}.jpg`}
-                    className="card-img-top m-2 " onError={(e) => {
-                        e.target.src = fallbackImg;
-                    }} alt="..." />
-                    </div>
-                <div className="card-body text-light">
-                    <h5 className="card-title d-flex  m-5" >Name: {planetDetail.name}</h5>
-                    <div className="">
-                        <p className="card-text   m-3">Population: {planetDetail.population}</p>
-                        <p className="card-text   m-3">Terrain: {planetDetail.terrain}</p>
-                    </div>
-                </div>
-    
-
-
+   return (
+  <div className="containerDetail container py-4 d-flex justify-content-center">
+    <div className="row g-4 align-items-center w-100">
+      <div className="col-md-6 d-flex justify-content-center">
+        <img
+          src={`https://raw.githubusercontent.com/tbone849/star-wars-guide/refs/heads/master/build/assets/img/planets/${params.uid}.jpg`}
+          className="img-fluid rounded border border-light"
+          onError={(e) => {
+            e.target.src = fallbackImg;
+          }}
+          alt="..."
+        />
+      </div>
+      <div className="col-md-6 text-light">
+        <h5 className="mb-4 text-center text-md-start fw-bold">
+          Name: {planetDetail.name}
+        </h5>
+        <div className="px-3">
+          <p className="mb-3">
+            <strong>Population:</strong> {planetDetail.population}
+          </p>
+          <p className="mb-3">
+            <strong>Terrain:</strong> {planetDetail.terrain}
+          </p>
         </div>
-    )
+      </div>
+    </div>
+  </div>
+);
+
 }

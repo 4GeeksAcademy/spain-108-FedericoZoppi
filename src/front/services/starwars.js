@@ -105,3 +105,22 @@ export const getCharacterDetails = async (uid) => {
 
     }
   }
+
+
+  export const getStarshipDetails = async (uid) => {
+    try {
+      const response = await fetch (`${host}/starships/${uid}`);
+      if (!response.ok && response.status == 404) {
+
+      }
+        const data = await response.json();
+
+
+
+    return data.result.properties
+   }
+      catch(error){
+        console.error("NO ENCONTRE LA NAVE")
+
+    }
+  }

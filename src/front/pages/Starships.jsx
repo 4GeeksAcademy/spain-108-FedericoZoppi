@@ -15,7 +15,7 @@ export const Starships = () => {
   const fallbackImg = "https://starwars.chocobar.net/img/big-placeholder.jpg";
 
   return (
-    <div className="containerPlanetas row d-flex justify-content-around  mb-5">
+    <div className="containerStarships row d-flex justify-content-around  mb-5">
       {starships.map((item) => {
 
         return (
@@ -29,7 +29,7 @@ export const Starships = () => {
               <h5 className="card-title">{item.name}</h5>
 
               <div className="botones d-flex justify-content-between">
-                <Link to={`/startships/${item.uid}`} className="btn btn-primary ">
+                <Link to={`/starships/${item.uid}`} className="btn btn-primary ">
                   Learn more
                 </Link>
                 <span className="btn btn-outline-danger" onClick={() => handleFavorite(item)
