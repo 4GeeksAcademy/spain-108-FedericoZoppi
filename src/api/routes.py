@@ -1,6 +1,3 @@
-"""
-This module takes care of starting the API Server, Loading the DB and Adding the endpoints
-"""
 from flask import Flask, request, jsonify, url_for, Blueprint
 from api.utils import generate_sitemap, APIException
 from flask_cors import CORS
@@ -73,8 +70,9 @@ def user(id):
         response_body['message'] = f'Usuario {id} eliminado'
         response_body['results'] = None
         return response_body, 200
+    
 
-
+    
 @api.route('/followers', methods=['POST'])
 def follower():
     # Voy a recibir el token del usuario del que sigue (follower)
