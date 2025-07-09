@@ -18,6 +18,13 @@ import {Planets} from "./pages/Planets"
 import { PlanetDetails } from "./pages/PlanetDetails";
 import {Starships} from "./pages/Starships"
 import {StarshipDetails} from "./pages/StarshipDetails"
+import {Login} from "./pages/Login";
+
+
+// import { Users } from "./pages/Users.jsx";
+// import { UsersDetails } from "./pages/UsersDetails.jsx";
+import { Register } from "./pages/Register.jsx";
+// import { EditProfile } from "./pages/EditProfile.jsx";
 
 
 export const router = createBrowserRouter(
@@ -40,7 +47,11 @@ export const router = createBrowserRouter(
         <Route path="/planets/:uid" element={<PlanetDetails/>}/>
         <Route path="/starships" element={<Starships/>}/>
         <Route path="/starships/:uid" element={<StarshipDetails/>}/>
-
+        <Route path="/login" element={<Login/>}/>
+        <Route path='/register' element={<Register />} />
+        {/* <Route path='/edit-profile' element={<EditProfile />} /> */}
+        {/* <Route path='/users' element={<Users />} /> */}
+        {/* <Route path='/users/:id' element={<UsersDetails />} /> */}
 
         {/* Nested Routes: Defines sub-routes within the BaseHome component. */}
         {/* <Route path="/Cards" element={<Cards />} /> */}

@@ -15,6 +15,11 @@ export const Navbar = () => {
     dispatch({ type: "favorite", payload: item })
   }
 
+   const handleOnSubmint = (event) => {
+    event.preventDefault()
+    // mostar el componente login
+    navigate('/login')
+  }
 
 
 
@@ -41,6 +46,7 @@ export const Navbar = () => {
         <li className="nav-item">
           <Link to="/Starships" className="nav-link">Starships</Link>
         </li>
+       
         <li className="nav-item dropdown">
           <button className="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown">
             Favorites
@@ -56,7 +62,10 @@ export const Navbar = () => {
               </li>
             ))}
           </ul>
+          
         </li>
+        <Link to='/login'  className="btn btn-outline-success" type="submit">Login</Link>
+       
       </ul>
     </div>
   </div>

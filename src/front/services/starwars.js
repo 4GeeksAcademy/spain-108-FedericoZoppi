@@ -58,13 +58,13 @@ const cached = localStorage.getItem("starships");
   }
   try {
     const response = await fetch(`${host}/starships`);
-    console.log(response)
+   
     if (!response.ok && response.status === 404) {
       console.log("NO ENCONTRÉ LA LISTA DE PERSONAJES");
     }
     const data = await response.json();
     localStorage.setItem("starships", JSON.stringify(data.results));
-    console.log(data)
+
     return data.results;
   } catch (error) {
     console.error("Error al cargar personajes:", error);

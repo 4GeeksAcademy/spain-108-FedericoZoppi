@@ -12,6 +12,13 @@ export const initialStore = () => {
     planetDetail: {},
     starships: [],
     starshipDetail: {},
+
+    todos: [],
+    users: [],
+    currentUser: {},
+    favorites: ['favorito 1', 'otro favorito', 'uno mas'],
+    token: '',
+    isLogged: false
   };
 };
 
@@ -22,6 +29,27 @@ export default function storeReducer(store, action = {}) {
         ...store,
         message: action.payload,
       };
+
+    case 'isLogged':
+      return { ...store, isLogged: action.payload}
+    case 'token':
+      return { ...store, token: action.payload}
+    
+      case 'currentUser':
+      return { ...store, currentUser: action.payload }
+
+    case 'users':
+      return { ...store, users: action.payload}
+      
+    case 'getTodos':
+      return { ...store, todos: action.payload }
+
+     case 'add_task':
+      const { id,  color } = action.payload
+      return {
+        ...store,
+        todos: store.todos.map((todo) => (todo.id === id ? { ...todo, background: color } : todo))
+      }; 
 
     case "getContacts":
       const contacts = action.payload;

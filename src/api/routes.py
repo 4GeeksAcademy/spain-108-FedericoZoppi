@@ -12,6 +12,7 @@ from flask_jwt_extended import jwt_required
 from flask_jwt_extended import get_jwt
 
 
+
 api = Blueprint('api', __name__)
 CORS(api)  # Allow CORS requests to this API
 
@@ -53,7 +54,6 @@ def users():
         user.email = data.get('email', 'user@email.com').lower()
         user.password = data.get('password', '1')
         user.is_active = True
-        user.is_admin = True
         user.is_admin = data.get('is_admin', False)
         user.first_name = data.get('first_name', None)
         user.last_name = data.get('last_name', None)
@@ -282,29 +282,29 @@ def remove_favorite_character(character_id):
 
 
 
-# @api.route("/login", methods=["POST"])
-# def login():
-#     response_body = {}
-#     data = request.json
-#     email = data.get("email", None).lower()
-#     password = request.json.get("password", None)
-#     # Buscar el email y el password en la BBDD y verificar si is_active es True.
-#     user = db.session.execute(db.select(Users).where(Users.email == email,
-#                                                      Users.password == password,
-#                                                      Users.is_active == True)).scalar()
-#     if not user:
-#         response_body['message'] = 'Bad email or password'
-#         return response_body, 401
-#     claims = {'user_id': user.serialize()['id'],
-#               'is_admin': user.serialize()['is_admin']}
-#     print(claims)
-#     access_token = create_access_token(
-#         identity=email, additional_claims=claims)
-#     response_body['message'] = 'User logged OK'
-#     response_body['access_token'] = access_token
-#     return response_body, 200
-# # Protect a route with jwt_required, which will kick out requests
-# # without a valid JWT present.
+@api.route("/login", methods=["POST"])
+def login():
+    response_body = {}
+    data = request.json
+    email = data.get("email", None).lower()
+    password = request.json.get("password", None)
+    # Buscar el email y el password en la BBDD y verificar si is_active es True.
+    user = db.session.execute(db.select(Users).where(Users.email == email,
+                                                     Users.password == password,
+                                                     Users.is_active == True)).scalar()
+    if not user:
+        response_body['message'] = 'Bad email or password'
+        return response_body, 401
+    claims = {'user_id': user.serialize()['id'],
+              'is_admin': user.serialize()['is_admin']}
+    print(claims)
+    access_token = create_access_token(
+        identity=email, additional_claims=claims)
+    response_body['message'] = 'User logged OK'
+    response_body['access_token'] = access_token
+    return response_body, 200
+# Protect a route with jwt_required, which will kick out requests
+# without a valid JWT present.
 
 
 
